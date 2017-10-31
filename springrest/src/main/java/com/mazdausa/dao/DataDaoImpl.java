@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import com.mazdausa.model.Employee;
 
 public class DataDaoImpl implements DataDao {
@@ -27,9 +28,9 @@ public class DataDaoImpl implements DataDao {
 		return false;
 	}
 
-	public Employee getEntityById(long id) throws Exception {
+	public Employee getEntityById(int id) throws Exception {
 		session = sessionFactory.openSession();
-		Employee employee = (Employee) session.load(Employee.class, new Long(id));
+		Employee employee = (Employee) session.get(Employee.class, new Integer(id));
 		tx = session.getTransaction();
 		session.beginTransaction();
 		tx.commit();
@@ -46,7 +47,7 @@ public class DataDaoImpl implements DataDao {
 		return employeeList;
 	}
 
-	public boolean deleteEntity(long id) throws Exception {
+	public boolean deleteEntity(int id) throws Exception {
 		session = sessionFactory.openSession();
 		Object o = session.load(Employee.class, id);
 		tx = session.getTransaction();

@@ -16,7 +16,7 @@ public class DataServicesImpl implements DataServices {
 		return dataDao.addEntity(employee);
 	}
 
-	public Employee getEntityById(long id) throws Exception {
+	public Employee getEntityById(int id) throws Exception {
 		return dataDao.getEntityById(id);
 	}
 
@@ -24,7 +24,7 @@ public class DataServicesImpl implements DataServices {
 		return dataDao.getEntityList();
 	}
 
-	public boolean deleteEntity(long id) throws Exception {
+	public boolean deleteEntity(int id) throws Exception {
 		return dataDao.deleteEntity(id);
 	}
 

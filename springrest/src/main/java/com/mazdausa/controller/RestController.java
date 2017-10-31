@@ -3,6 +3,8 @@ package com.mazdausa.controller;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+
+import com.mazdausa.model.Employee;
 import com.mazdausa.model.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mazdausa.model.Employee;
 import com.mazdausa.services.DataServices;
 
 @Controller
@@ -40,7 +41,7 @@ public class RestController {
 
 	/* Ger a single objct in Json form in Spring Rest Services */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Employee getEmployee(@PathVariable("id") long id) {
+	public @ResponseBody Employee getEmployee(@PathVariable("id") int id) {
 		Employee employee = null;
 		try {
 			employee = dataServices.getEntityById(id);
@@ -68,7 +69,7 @@ public class RestController {
 
 	/* Delete an object from DB in Spring Restful Services */
 	@RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
-	public @ResponseBody Status deleteEmployee(@PathVariable("id") long id) {
+	public @ResponseBody Status deleteEmployee(@PathVariable("id") int id) {
 
 		try {
 			dataServices.deleteEntity(id);

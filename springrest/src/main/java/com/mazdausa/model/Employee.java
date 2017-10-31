@@ -11,16 +11,22 @@ import javax.persistence.Table;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "employee")
+@Table(name = "EMPLOYEE")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Employee implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", phone=" + phone + "]";
+	}
+
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private long id;
+	private int id;
 
 	@Column(name = "firstname")
 	private String firstName;
@@ -34,11 +40,11 @@ public class Employee implements Serializable {
 	@Column(name = "phone")
 	private String phone;
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
